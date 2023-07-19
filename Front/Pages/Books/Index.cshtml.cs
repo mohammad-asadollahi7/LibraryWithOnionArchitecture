@@ -23,7 +23,7 @@ namespace Front.Pages.Books
             books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
         }
 
-        
+
         public async Task OnGetDelete(string name)
         {
             var response = await _httpClient.DeleteAsync(BaseUrl + name);

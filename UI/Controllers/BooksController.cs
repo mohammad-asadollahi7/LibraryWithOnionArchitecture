@@ -4,6 +4,7 @@ using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Text.Json;
 
 namespace UI.Controllers;
 
@@ -50,8 +51,10 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{oldName}")]
-    public IActionResult Put(string oldName, [FromBody] BookDto bookDto)
+    public IActionResult Put(string oldName, [FromBody] string bookDtoString)
     {
+        var bookDto = JsonSerializer.Deserialize<BookDto>(bookDtoString);
+        
         _bookService.Update(oldName, bookDto);
         return Ok();
     }

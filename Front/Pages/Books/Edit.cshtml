@@ -1,0 +1,30 @@
+﻿@page "{oldName?}"
+@model Front.Pages.Books.EditModel
+
+
+
+
+<form method="post" class="form-group" enctype="multipart/form-data">
+
+    @{
+       var oldName = Model.book.Name;
+    }
+    <input type="hidden" asp-for="@Model.book.PhotoPath"/>
+   
+
+    <label asp-for="@Model.book.Name" ></label>
+    <input class="form-control" asp-for="@Model.book.Name" type="text"  />
+
+    <label asp-for="@Model.book.Author"></label>
+    <input class="form-control" asp-for="@Model.book.Author" type="text" />
+
+    <label asp-for="@Model.book.Description"></label>
+    <input class="form-control" asp-for="@Model.book.Description" type="text" />
+
+    <label asp-for="@Model.book.Price"></label>
+    <input class="form-control" asp-for="@Model.book.Price" type="text" />
+
+    <input type="file" asp-for="Photo" />
+
+    <button class="btn btn-primary" type="submit" asp-route-oldName="@oldName">Submit</button>
+</form>
