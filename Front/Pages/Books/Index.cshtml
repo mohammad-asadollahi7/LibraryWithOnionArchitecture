@@ -17,7 +17,8 @@
                     <h6 class="card-footer">Price: @book.Price T</h6>
                     <a class="btn btn-primary" asp-page="edit" asp-route-name="@book.Name">Edit</a>
                     <a class="btn btn-primary" asp-page-handler="Delete" asp-route-name="@book.Name">Delete</a>
-                </div>
+                    <a class="btn btn-primary" asp-page-handler="Add" asp-route-name="@book.Name">Add</a>
+                 </div>
             </div>
         }
     </div>

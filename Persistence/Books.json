@@ -1,1 +1,38 @@
-[{"Id":"1c827710-d54b-47ab-8408-b078cf6b20b9","Count":1,"Name":"The Lord of the Ringbbbbbb","Author":"Tolkien","Price":150000,"Description":"The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien\u0027s 1937 children\u0027s book The Hobbit, but eventually developed into a much larger work.","PhotoPath":"download.jpg"},{"Id":"7a93d3b5-22ad-4e66-9cd1-d2ffb86c800e","Count":1,"Name":"string","Author":"string","Price":787,"Description":"string","PhotoPath":"string"},{"Id":"487645a1-b064-438d-be89-ac03a342e1c2","Count":1,"Name":"oppo","Author":"olololo","Price":999,"Description":"oppop","PhotoPath":"lord.jpg"},{"Id":"9a470c65-7d39-4127-b152-04a29974f5c0","Count":1,"Name":"hjghg","Author":"yuy","Price":0,"Description":"ghh","PhotoPath":"lord.jpg"},{"Id":"7d9f2e4c-b6d0-4819-92d6-8553b6080a2f","Count":1,"Name":"oio","Author":"uyu","Price":977,"Description":"io","PhotoPath":"lord.jpg"}]
+[
+  {
+    "Id": "1c827710-d54b-47ab-8408-b078cf6b20b9",
+    "Count": 3,
+    "Name": "The Lord of the Ringbbbbbb",
+    "Author": "Tolkien",
+    "Price": 150000,
+    "Description": "The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien\u0027s 1937 children\u0027s book The Hobbit, but eventually developed into a much larger work.",
+    "PhotoPath": "download.jpg"
+  },
+  {
+    "Id": "487645a1-b064-438d-be89-ac03a342e1c2",
+    "Count": 2,
+    "Name": "oppopppppppppp",
+    "Author": "olololo",
+    "Price": 999,
+    "Description": "oppop",
+    "PhotoPath": "lord.jpg"
+  },
+  {
+    "Id": "9a470c65-7d39-4127-b152-04a29974f5c0",
+    "Count": 3,
+    "Name": "hjghg",
+    "Author": "yuy",
+    "Price": 0,
+    "Description": "ghh",
+    "PhotoPath": "lord.jpg"
+  },
+  {
+    "Id": "7d9f2e4c-b6d0-4819-92d6-8553b6080a2f",
+    "Count": 1,
+    "Name": "oio",
+    "Author": "uyu",
+    "Price": 977,
+    "Description": "io",
+    "PhotoPath": "lord.jpg"
+  }
+]

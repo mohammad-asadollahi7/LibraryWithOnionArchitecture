@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using System.Text;
 using static System.Net.WebRequestMethods;
 
 
@@ -27,6 +28,14 @@ namespace Front.Pages.Books
         public async Task OnGetDelete(string name)
         {
             var response = await _httpClient.DeleteAsync(BaseUrl + name);
+            response.EnsureSuccessStatusCode();
+            await OnGet();
+        }
+
+
+        public async Task OnGetAdd(string name)
+        {
+            var response = await _httpClient.GetAsync("http://localhost:5178/api/Books/AddCount/" + name);
             response.EnsureSuccessStatusCode();
             await OnGet();
         }

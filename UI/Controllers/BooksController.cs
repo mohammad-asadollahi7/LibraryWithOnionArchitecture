@@ -43,17 +43,16 @@ public class BooksController : ControllerBase
     }
 
 
-    [HttpPatch("AddCount/{name}")]
-    public IActionResult PatchCount(string name)
+    [HttpGet("AddCount/{name}")]
+    public IActionResult AddCount(string name)
     {
         _bookService.AddCount(name);
         return Ok();
     }
 
     [HttpPut("{oldName}")]
-    public IActionResult Put(string oldName, [FromBody] string bookDtoString)
+    public IActionResult Put(string oldName, [FromBody] BookDto bookDto)
     {
-        var bookDto = JsonSerializer.Deserialize<BookDto>(bookDtoString);
         _bookService.Update(oldName, bookDto);
         return Ok();
     }
