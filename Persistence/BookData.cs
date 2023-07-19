@@ -19,10 +19,11 @@ public class BookData
     private string GetFilePath()
     {
         string? projectPath = new FileInfo(AppDomain.CurrentDomain.BaseDirectory)?
-                                .Directory?.Parent?.Parent?.Parent?.FullName;
+                                .Directory?.Parent?.Parent?.Parent?.Parent?.FullName;
 
-        string? FilePath = Path.Combine(projectPath, "Books.json");
-        return FilePath;
+        string? jsonFilePath = Path.Combine(projectPath, "Persistence", "Books.json");
+        string? photoFilePath = Path.Combine(projectPath, "Persistence", "Photos");
+        return jsonFilePath;
     }
 
 }

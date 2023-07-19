@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
+using Newtonsoft.Json;
+
 
 namespace Front.Pages.Books
 {
@@ -18,7 +19,7 @@ namespace Front.Pages.Books
             var response = await _httpClient.GetAsync("http://localhost:5178/api/Books");
             response.EnsureSuccessStatusCode();
             var jsonContent = await response.Content.ReadAsStringAsync();
-            books = JsonSerializer.Deserialize<List<Book>>(jsonContent);
+            books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
         }
     }
 }

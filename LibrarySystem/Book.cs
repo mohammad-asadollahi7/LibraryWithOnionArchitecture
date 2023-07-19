@@ -9,7 +9,8 @@ public class Book
 
     [JsonConstructor]
     public Book(string name, string author, int price,
-                string description, string photoPath, Guid id, int count)
+                string description, string photoPath, 
+                Guid id, int count)
     {
         Id = id;
         Count = count;
