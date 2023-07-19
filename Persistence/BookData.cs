@@ -1,20 +1,25 @@
 ﻿using Domain;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Persistence;
 
 public class BookData
 {
-    public List<Book> books;
-    private string FilePath;
+    public List<Book>? books;
+    private string jsonFilePath;
     public BookData()
     {
-        FilePath = GetFilePath();
-        var jsonString = File.ReadAllText(FilePath);
+        jsonFilePath = GetFilePath();
+        var jsonString = File.ReadAllText(jsonFilePath);
         books = JsonSerializer.Deserialize<List<Book>>(jsonString);
     }
-      
+
+
+    public void SaveChanges()
+    {
+        var jsonString = JsonSerializer.Serialize(books);
+        File.WriteAllText(jsonFilePath, jsonString);
+    }
 
     private string GetFilePath()
     {
@@ -22,15 +27,9 @@ public class BookData
                                 .Directory?.Parent?.Parent?.Parent?.Parent?.FullName;
 
         string? jsonFilePath = Path.Combine(projectPath, "Persistence", "Books.json");
-        string? photoFilePath = Path.Combine(projectPath, "Persistence", "Photos");
         return jsonFilePath;
     }
 
 
-    public void SaveChanges()
-    {
-        var jsonString = JsonSerializer.Serialize(books);
-        File.WriteAllText(FilePath, jsonString);
-    }
 
 }

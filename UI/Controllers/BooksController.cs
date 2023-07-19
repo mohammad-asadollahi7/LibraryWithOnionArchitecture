@@ -1,10 +1,7 @@
 ﻿using Application;
 using Application.Dto;
-using Domain;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using System.Text.Json;
+
 
 namespace UI.Controllers;
 

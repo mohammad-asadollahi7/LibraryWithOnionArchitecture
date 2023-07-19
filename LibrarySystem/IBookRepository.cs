@@ -2,7 +2,7 @@
 
 public interface IBookRepository
 {
-    IEnumerable<Book> GetAll();
+    IEnumerable<Book>? GetAll();
     Book? GetByName(string name);
     bool IsExist(Predicate<Book> predicate);
     Book Create(Book book);

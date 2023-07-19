@@ -3,22 +3,25 @@
 @model Front.Pages.Books.IndexModel
 
 <div class="container">
-    <div class="card-group">
+    <div class="row justify-content-center gap-1">
         @foreach (var book in Model.books)
         {
             var photoPath = "~/photo/" + book.PhotoPath;
 
-            <div class="card align-items-center p-1">
-                <h5 class="card-header">@book.Name</h5>
-                <img class="card-img-top img-style" src="@photoPath" asp-append-version="true" />
-                <div class="card-body text-center">
-                    <p class="card-text">@book.Description</p>
-                    <h5 class="card-footer">Author: @book.Author</h5>
-                    <h6 class="card-footer">Price: @book.Price T</h6>
+            <div class="col-lg-3 justify-content-center border border-1 rounded-1 p-1">
+                <div class="text-center">
+                    <h5 class="text-center">@book.Name</h5>
+                    <img class="img-style" src="@photoPath" asp-append-version="true" />
+                </div>
+
+                <div class="text-center">
+                    <p class="description">@book.Description</p>
+                    <h5 class="">Author: @book.Author</h5>
+                    <h6 class="">Price: @book.Price T</h6>
                     <a class="btn btn-primary" asp-page="edit" asp-route-name="@book.Name">Edit</a>
                     <a class="btn btn-primary" asp-page-handler="Delete" asp-route-name="@book.Name">Delete</a>
                     <a class="btn btn-primary" asp-page-handler="Add" asp-route-name="@book.Name">Add</a>
-                 </div>
+                </div>
             </div>
         }
     </div>

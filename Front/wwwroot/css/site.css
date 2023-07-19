@@ -20,5 +20,24 @@ body {
 
 .img-style{
     width: 200px;
-    height: auto;
+    height: 300px;
+    border-radius: 5px;
+}
+
+
+.description{
+    text-align: justify;
+    padding: 2rem;
+    height: 150px;
+    overflow: hidden;
+}
+
+@media(max-width: 989px){
+    .img-style{
+        width: 400px;
+        height:600px;
+    }
+    .description {
+        height: 90px;
+    }
 }

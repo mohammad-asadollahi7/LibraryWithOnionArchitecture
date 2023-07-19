@@ -11,7 +11,7 @@ public class BookRepository : IBookRepository
     {
         _bookData = new BookData();
     }
-    public IEnumerable<Book> GetAll()
+    public IEnumerable<Book>? GetAll()
     {
         return _bookData.books;
     }

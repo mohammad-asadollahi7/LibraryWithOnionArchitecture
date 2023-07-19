@@ -2,7 +2,6 @@
 using Application.Exception;
 using AutoMapper;
 using Domain;
-using System.Globalization;
 
 namespace Application;
 
@@ -21,6 +20,9 @@ public class BookService : IBookService
     public IEnumerable<BookDto> Get()
     {
         var books = _bookRepository.GetAll();
+        if (books == null)
+            throw new ThereIsNoBookException();
+
         return _mapper.Map<IEnumerable<BookDto>>(books);
     }
 

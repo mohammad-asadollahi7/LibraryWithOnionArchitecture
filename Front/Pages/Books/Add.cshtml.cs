@@ -6,7 +6,8 @@ namespace Front.Pages.Books;
 
 public class AddModel : PageModel
 {
-    private HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
+    private readonly string BaseUrl = "http://localhost:5178/api/Books/";
 
     public AddModel(HttpClient httpClient)
     {
@@ -25,7 +26,7 @@ public class AddModel : PageModel
     public async Task<IActionResult> OnPost() 
     {
         book.PhotoPath = Photo.FileName;
-        var response = await _httpClient.PostAsJsonAsync("http://localhost:5178/api/Books/", book);
+        var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
         response.EnsureSuccessStatusCode();
         using(var fs = new FileStream($"wwwroot/photo/{book.PhotoPath}", FileMode.Create))
         {
