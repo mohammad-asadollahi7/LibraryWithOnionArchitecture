@@ -35,9 +35,7 @@ public class EditModel : PageModel
             Photo.CopyTo(fs);
         }
         book.PhotoPath = Photo.FileName;
-        var jsonString = JsonConvert.SerializeObject(book);
-        
-        var response = await _httpClient.PutAsJsonAsync("http://localhost:5178/api/Books/" + oldName, jsonString);
+        var response = await _httpClient.PutAsJsonAsync("http://localhost:5178/api/Books/" + oldName, book);
         response.EnsureSuccessStatusCode();
         return RedirectToPage("Index");
     }

@@ -54,7 +54,6 @@ public class BooksController : ControllerBase
     public IActionResult Put(string oldName, [FromBody] string bookDtoString)
     {
         var bookDto = JsonSerializer.Deserialize<BookDto>(bookDtoString);
-        
         _bookService.Update(oldName, bookDto);
         return Ok();
     }
