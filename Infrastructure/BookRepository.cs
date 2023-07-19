@@ -29,19 +29,22 @@ public class BookRepository : IBookRepository
 
     public Book Create(Book book)
     {
-        _bookData.books.Add(book);
-       return book;
+       _bookData.books.Add(book);
+        _bookData.SaveChanges();
+        return book;
     }
 
     public void Update(Book updatedBook)
     {
         var index = _bookData.books.FindIndex(b => b.Id == updatedBook.Id);
         _bookData.books[index] = updatedBook;
+        _bookData.SaveChanges();
     }
 
     public void Delete(Book book)
     {
         _bookData.books.Remove(book);
+        _bookData.SaveChanges();
     }
 
 }

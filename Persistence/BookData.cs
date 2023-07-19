@@ -7,10 +7,10 @@ namespace Persistence;
 public class BookData
 {
     public List<Book> books;
-
+    private string FilePath;
     public BookData()
     {
-        var FilePath = GetFilePath();
+        FilePath = GetFilePath();
         var jsonString = File.ReadAllText(FilePath);
         books = JsonSerializer.Deserialize<List<Book>>(jsonString);
     }
@@ -24,6 +24,13 @@ public class BookData
         string? jsonFilePath = Path.Combine(projectPath, "Persistence", "Books.json");
         string? photoFilePath = Path.Combine(projectPath, "Persistence", "Photos");
         return jsonFilePath;
+    }
+
+
+    public void SaveChanges()
+    {
+        var jsonString = JsonSerializer.Serialize(books);
+        File.WriteAllText(FilePath, jsonString);
     }
 
 }

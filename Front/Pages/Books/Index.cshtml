@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{name?}"
 @using System.IO
 @model Front.Pages.Books.IndexModel
 
@@ -15,6 +15,8 @@
                     <p class="card-text">@book.Description</p>
                     <h5 class="card-footer">Author: @book.Author</h5>
                     <h6 class="card-footer">Price: @book.Price T</h6>
+                    <a class="btn btn-primary" asp-page="edit" asp-route-name="@book.Name">Edit</a>
+                    <a class="btn btn-primary" asp-page-handler="Delete" asp-route-name="@book.Name">Delete</a>
                 </div>
             </div>
         }
