@@ -16,7 +16,7 @@ public class BookRepositoryBySql : IBookRepository
     public Book Create(Book book)
     {
         _bookData.ExecutedCommand($"INSERT INTO dbo.Book " +
-                         $"VALUES('SELECT new Id()', '{book.Count}', '{book.Name}'" +
+                         $"VALUES('{book.Id}', '{book.Count}', '{book.Name}'," +
                          $"'{book.Author}', '{book.Price}', " +
                          $"'{book.Description}', '{book.PhotoPath}')");
         return book;
@@ -43,7 +43,7 @@ public class BookRepositoryBySql : IBookRepository
     public bool IsExist(string name)
     {
         var stringJson = _bookData.ExecutedQuery($"SELECT * FROM dbo.Book WHERE Name = '{name}'");
-        return stringJson != null;
+        return stringJson != "[]";
 
     }
 

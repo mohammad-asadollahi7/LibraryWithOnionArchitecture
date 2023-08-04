@@ -12,8 +12,9 @@ public class BookDataFromDatabase
     private readonly SqlConnection connectionString;
     public BookDataFromDatabase()
     {
-        connectionString = new SqlConnection("Server=M-A7" + "Database=LibrarySystemDb" +
-                                             "Trusted_Connection=true");
+        //connectionString = new SqlConnection("Server=./M-A7" + "Database=LibrarySystemDb" +
+        //                                     "Trusted_Connection=true");
+        connectionString = new SqlConnection("data source=M-A7;initial catalog=LibrarySystemDb;integrated security=SSPI;");
     }
 
     public string ExecutedQuery(string sql)

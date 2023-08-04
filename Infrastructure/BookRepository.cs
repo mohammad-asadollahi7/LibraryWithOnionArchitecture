@@ -7,9 +7,9 @@ public class BookRepository : IBookRepository
 {
     private BookDataFromJson _bookData;
 
-    public BookRepository()
+    public BookRepository(BookDataFromJson bookData)
     {
-        _bookData = new BookDataFromJson();
+        _bookData = bookData;
     }
     public IEnumerable<Book>? GetAll()
     {

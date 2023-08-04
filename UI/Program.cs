@@ -2,6 +2,7 @@ using Application;
 using Application.MapperProfiles;
 using Domain;
 using Infrastructure;
+using Persistence;
 using UI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookRepositoryContainer, BookRepositoryContainer>();
+builder.Services.AddScoped<BookDataFromDatabase>();
+builder.Services.AddScoped<BookDataFromJson>();
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(BookProfile));
 

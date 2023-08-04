@@ -19,7 +19,6 @@ public class Book
         Description = description;
         PhotoPath = photoPath;
         Price = price;
-
     }
 
     public Book(IBookRepository? bookRepository,
