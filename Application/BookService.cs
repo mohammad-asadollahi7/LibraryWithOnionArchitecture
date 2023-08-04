@@ -2,6 +2,7 @@
 using Application.Exception;
 using AutoMapper;
 using Domain;
+using System.Xml.Linq;
 
 namespace Application;
 
@@ -44,9 +45,7 @@ public class BookService : IBookService
                            bookDto.Name, 
                            bookDto.Author, 
                            bookDto.Description,
-                           bookDto.PhotoPath);
-
-        book.SetPrice(bookDto.Price);
+                           bookDto.PhotoPath, bookDto.Price);
 
         var submittedBook =  _bookRepository.Create(book);
         return _mapper.Map<BookDto>(submittedBook);
@@ -71,11 +70,10 @@ public class BookService : IBookService
             throw new TheBookWasNotFoundException();
 
         var book = _bookRepository.GetByName(oldName);
-
         book.Name = bookDto.Name;
-        book.PhotoPath = bookDto.PhotoPath;
-        book.Description = bookDto.Description;
         book.Author = bookDto.Author;
+        book.Description = bookDto.Description;
+        book.PhotoPath = bookDto.PhotoPath;
         book.SetPrice(bookDto.Price);
         
         _bookRepository.Update(book);
@@ -93,7 +91,7 @@ public class BookService : IBookService
 
     private bool IsBookExistByName(string name)
     {
-        return _bookRepository.IsExist(b => b.Name == name);
+        return _bookRepository.IsExist(name);
     }
 
 }

@@ -5,11 +5,11 @@ namespace Infrastructure;
 
 public class BookRepository : IBookRepository
 {
-    private BookData _bookData;
+    private BookDataFromJson _bookData;
 
     public BookRepository()
     {
-        _bookData = new BookData();
+        _bookData = new BookDataFromJson();
     }
     public IEnumerable<Book>? GetAll()
     {
@@ -22,9 +22,9 @@ public class BookRepository : IBookRepository
     }
 
 
-    public bool IsExist(Predicate<Book> predicate)
+    public bool IsExist(string name)
     {
-        return _bookData.books.Exists(predicate);
+        return _bookData.books.Exists(n => n.Name == name);
     }
 
     public Book Create(Book book)

@@ -3,15 +3,16 @@ using System.Text.Json;
 
 namespace Persistence;
 
-public class BookData
+public class BookDataFromJson
 {
     public List<Book>? books;
     private string jsonFilePath;
-    public BookData()
+    public BookDataFromJson()
     {
         jsonFilePath = GetFilePath();
         var jsonString = File.ReadAllText(jsonFilePath);
-        books = JsonSerializer.Deserialize<List<Book>>(jsonString);
+        List<BookDataModel>? bookDataModels = JsonSerializer.Deserialize<List<BookDataModel>>(jsonString);
+        books = bookDataModels.Cast<Book>().ToList();
     }
 
 
@@ -29,7 +30,4 @@ public class BookData
         string? jsonFilePath = Path.Combine(projectPath, "Persistence", "Books.json");
         return jsonFilePath;
     }
-
-
-
 }
