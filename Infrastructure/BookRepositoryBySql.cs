@@ -31,13 +31,14 @@ public class BookRepositoryBySql : IBookRepository
     public IEnumerable<Book>? GetAll()
     {
         var stringJson = _bookData.ExecutedQuery("SELECT * FROM dbo.Book");
-        return JsonConvert.DeserializeObject<IEnumerable<Book>>(stringJson);
+        return JsonConvert.DeserializeObject<IEnumerable<BookDataModel>>(stringJson);
     }
 
     public Book? GetByName(string name)
     {
         var stringJson = _bookData.ExecutedQuery($"SELECT * FROM dbo.Book WHERE Name = '{name}'");
-        return JsonConvert.DeserializeObject<Book>(stringJson);
+        var jsonList = JsonConvert.DeserializeObject<List<BookDataModel>>(stringJson);
+        return jsonList[0];
     }
 
     public bool IsExist(string name)
@@ -52,6 +53,6 @@ public class BookRepositoryBySql : IBookRepository
         _bookData.ExecutedCommand($"UPDATE dbo.Book SET Count = '{updatedBook.Count}'," +
                                   $"Name = '{updatedBook.Name}', Author = '{updatedBook.Author}', " +
                                   $"Price = '{updatedBook.Price}', Description = '{updatedBook.Description}'," +
-                                  $"PhotoPath = '{updatedBook.PhotoPath}'");
+                                  $"PhotoPath = '{updatedBook.PhotoPath}' WHERE Id = '{updatedBook.Id}'");
     }
 }

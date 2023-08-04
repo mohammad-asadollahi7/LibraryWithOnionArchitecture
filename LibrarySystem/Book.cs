@@ -43,7 +43,7 @@ public class Book
     
     public void SetPrice(int price)
     {
-        if (price < 0 || price >= 5000000)
+        if (price <= 0 || price >= 5000000)
         {
             throw new ThePriceIsNotValidException();
         }
