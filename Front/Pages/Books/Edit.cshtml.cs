@@ -26,7 +26,7 @@ public class EditModel : PageModel
     {
         var response = await _httpClient.GetAsync(BaseUrl + name);
         response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
+        var content =  await response.Content.ReadAsStringAsync();
         book = JsonConvert.DeserializeObject<Book>(content);
     }
 
