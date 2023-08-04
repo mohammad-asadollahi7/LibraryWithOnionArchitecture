@@ -7,8 +7,8 @@ public class Book
 {
     private readonly IBookRepository? _bookRepository;
 
-    [JsonConstructor]
-    public Book(string name, string author, int price,
+   
+    protected Book(string name, string author, int price,
                 string description, string photoPath, 
                 Guid id, int count)
     {
@@ -24,18 +24,19 @@ public class Book
 
     public Book(IBookRepository? bookRepository,
                 string name, string author,
-                string Description, string PhotoPath)
+                string Description, string PhotoPath, int price)
     {
         _bookRepository = bookRepository;
         SetValues(name, author, Description, 
                  PhotoPath);
+        SetPrice(price);
     }
 
     public Guid Id { get; private set; }
     public int Count { get; set; }
-    public string Name { get; set; }
+    public string Name { get;  set; }
     public string Author { get; set; }
-    public int Price { get; private set; }
+    public int Price { get; set; }
     public string Description { get; set; }
     public string PhotoPath { get; set; }
 
@@ -54,7 +55,7 @@ public class Book
     private void SetValues(string name, string author, 
                        string description, string photoPath)
     {
-        var IsExist = _bookRepository.IsExist(b => b.Name == name);
+        var IsExist = _bookRepository.IsExist(name);
 
         if (IsExist)
         {
